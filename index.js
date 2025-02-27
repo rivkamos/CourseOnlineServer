@@ -51,7 +51,7 @@ app.use('/api/users', userRoutes(db));
 app.use('/api/courses', courseRoutes(db));
 app.use('/api/courses/:courseId/lessons', lessonRoutes(db));
 
-app.listen(3001, () => {
+app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
 // const express = require('express');
