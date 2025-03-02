@@ -328,6 +328,39 @@
               ]
             }
           }
+        },
+        {
+          "name": "Unenroll from Course",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer <your_token>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"userId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/courses/:courseId/unenroll",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "courses", ":courseId", "unenroll"],
+              "variable": [
+                {
+                  "key": "courseId",
+                  "value": "1"
+                }
+              ]
+            }
+          }
         }
       ]
     },

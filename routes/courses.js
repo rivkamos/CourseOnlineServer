@@ -79,5 +79,26 @@ module.exports = (db) => {
     );
   });
 
+   // Remove student from course
+   router.delete('/:courseId/unenroll', checkAuth, (req, res) => {
+    const { courseId } = req.params;
+    const { userId } = req.body;
+    db.run(
+      'DELETE FROM student_courses WHERE userId = ? AND courseId = ?',
+      [userId, courseId],
+      function (err) {
+        if (err) {
+          console.error('Error unenrolling student from course:', err);
+          return res.status(500).json({ message: 'Error unenrolling student from course' });
+        }
+        if (this.changes === 0) {
+          return res.status(404).json({ message: 'Student not found in course' });
+        }
+        res.status(200).json({ message: 'Student unenrolled from course successfully' });
+      }
+    );
+  });
+
+
   return router;
 };
