@@ -27,6 +27,24 @@ module.exports = (db) => {
     });
   });
 
+   // Get courses by student ID
+   router.get('/student/:studentId', checkAuth, (req, res) => {
+    const { studentId } = req.params;
+    db.all(
+      'SELECT courses.* FROM courses ' +
+      'INNER JOIN student_courses ON courses.id = student_courses.courseId ' +
+      'WHERE student_courses.userId = ?',
+      [studentId],
+      (err, rows) => {
+        if (err) {
+          console.error('Error fetching student courses:', err);
+          return res.status(500).json({ message: 'Error fetching student courses' });
+        }
+        res.status(200).json(rows);
+      }
+    );
+  });
+
   // Create new course (Teacher only)
   router.post('/', checkAuth, checkTeacher, async (req, res) => {
     const { title, description } = req.body;

@@ -212,6 +212,31 @@
           }
         },
         {
+          "name": "Get Courses by Student ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer <your_token>"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/courses/student/:studentId",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "courses", "student", ":studentId"],
+              "variable": [
+                {
+                  "key": "studentId",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
           "name": "Create Course",
           "request": {
             "method": "POST",
@@ -437,90 +462,4 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"title\": \"New Lesson\",\n    \"content\": \"This is a new lesson.\",\n    \"courseId\": 1\n}"
-            },
-            "url": {
-              "raw": "http://localhost:3000/api/courses/:courseId/lessons",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["api", "courses", ":courseId", "lessons"],
-              "variable": [
-                {
-                  "key": "courseId",
-                  "value": "1"
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Update Lesson by ID",
-          "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer <your_token>"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"title\": \"Updated Lesson\",\n    \"content\": \"This is an updated lesson.\",\n    \"courseId\": 1\n}"
-            },
-            "url": {
-              "raw": "http://localhost:3000/api/courses/:courseId/lessons/:id",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["api", "courses", ":courseId", "lessons", ":id"],
-              "variable": [
-                {
-                  "key": "courseId",
-                  "value": "1"
-                },
-                {
-                  "key": "id",
-                  "value": "1"
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Delete Lesson by ID",
-          "request": {
-            "method": "DELETE",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer <your_token>"
-              }
-            ],
-            "url": {
-              "raw": "http://localhost:3000/api/courses/:courseId/lessons/:id",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["api", "courses", ":courseId", "lessons", ":id"],
-              "variable": [
-                {
-                  "key": "courseId",
-                  "value": "1"
-                },
-                {
-                  "key": "id",
-                  "value": "1"
-                }
-              ]
-            }
-          }
-        }
-      ]
-    }
-  ]
-}
+              "raw": "{\n    \"title\": \"New
